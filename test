@@ -6,30 +6,15 @@ import sys
 from subprocess import call
 
 
-COMMAND='ls -1'
+COMMAND='ls'
 DIRECTORY_FILE='test.txt'
 
-def main(directories=[], command=COMMAND):
-    with directories:
-        for line in directories:
+def main(directory_file=DIRECTORY_FILE, command=COMMAND):
+    with directory_file:
+        for line in directory_file:
             os.chdir(line.strip())
             call(command.split())
             os.chdir(os.pardir)
-
-def directories(value):
-    def string_handler(value):
-        return value
-    def file_descriptor_handler(value):
-        return value
-
-    handlers = dict(
-        str=string_handler,
-        file_descriptor=file_descriptor_handler,
-    )
-
-    handlers[type(value)]
-
-    return type(value)
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Execute commands on a list of directories.')
@@ -38,17 +23,14 @@ def parse_args():
                         type=str,
                         default=COMMAND,
                         help='the command to be run')
-    parser.add_argument('--directories',
-                        nargs='?',
-                        type=directories,
+    parser.add_argument('--directory-file',
+                        type=argparse.FileType('r'),
                         default=DIRECTORY_FILE,
-                        help='a file or whitespace separated string containing a list of directories to run the command on')
+                        help='a file containing a list of directories to run the command on')
 
-    args = parser.parse_args()
-    print args
-    return args
+    return parser.parse_args()
 
 
 if __name__ == '__main__':
     args = parse_args()
-    main(args.directories, args.command)
+    main(args.directory_file, args.command)
