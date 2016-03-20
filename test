@@ -1,0 +1,54 @@
+#!/usr/bin/env python
+
+import argparse
+import os
+import sys
+from subprocess import call
+
+
+COMMAND='ls -1'
+DIRECTORY_FILE='test.txt'
+
+def main(directories=[], command=COMMAND):
+    with directories:
+        for line in directories:
+            os.chdir(line.strip())
+            call(command.split())
+            os.chdir(os.pardir)
+
+def directories(value):
+    def string_handler(value):
+        return value
+    def file_descriptor_handler(value):
+        return value
+
+    handlers = dict(
+        str=string_handler,
+        file_descriptor=file_descriptor_handler,
+    )
+
+    handlers[type(value)]
+
+    return type(value)
+
+def parse_args():
+    parser = argparse.ArgumentParser(description='Execute commands on a list of directories.')
+    parser.add_argument('--command',
+                        '-c',
+                        type=str,
+                        default=COMMAND,
+                        help='the command to be run')
+    parser.add_argument('--directories',
+                        nargs='?',
+                        type=directories,
+                        default=DIRECTORY_FILE,
+                        help='a file or whitespace separated string containing a list of directories to run the command on')
+
+    args = parser.parse_args()
+    print args
+    return args
+
+
+if __name__ == '__main__':
+    args = parse_args()
+    main(args.directories, args.command)
