@@ -178,8 +178,9 @@ alias fuck='sudo $(fc -ln -1)'
 alias ish='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 alias rm!='rm -f'
 alias tt=travistest
+alias gnume=useGnuTools
 
-use-gnu-tools () {
+useGnuTools () {
     export PATH=/usr/local/Cellar/gnu-sed/4.2.2/libexec/gnubin:/usr/local/Cellar/coreutils/8.25/libexec/gnubin/:$PATH
 }
 

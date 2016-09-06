@@ -8,12 +8,12 @@ zstyle ':prezto:load' pmodule \
   'git' \
   'history' \
   'prompt' \
-  'python' \
-  'utility'
+  'python'
 
 zstyle ':prezto:module:prompt' theme 'paradox_bs'
 
 zstyle ':prezto:module:editor' key-bindings 'emacs'
+
 
 zstyle ':prezto:module:terminal' auto-title 'yes'
 zstyle ':prezto:module:terminal:tab-title' format '%m: %s'

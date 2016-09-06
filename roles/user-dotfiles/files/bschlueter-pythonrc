@@ -14,12 +14,13 @@ Loaded:
 - print_exc_plus()
 """
 
-from __future__ import print_function
+# from __future__ import print_function
 import sys
 import traceback
 import random
-import yaml
 from pprint import pprint as pp
+
+import yaml
 from jinja2 import Template
 
 try:
@@ -81,13 +82,13 @@ def print_exc_plus():
                                              frame.f_code.co_filename,
                                              frame.f_lineno))
         for key, value in list(frame.f_locals.items()):
-            print("\t%20s = " % key, end=' ')
+            print "\t%20s = " % key,
             #We have to be careful not to cause a new error in our error
             #printer! Calling str() on an unknown object could cause an
             #error we don't want.
             try:
-                print(value)
-            except:
-                print("<ERROR WHILE PRINTING VALUE>")
+                print value
+            except Exception:
+                print "<ERROR WHILE PRINTING VALUE>"
 
-print(__doc__)
+print __doc__

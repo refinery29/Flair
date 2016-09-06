@@ -4,11 +4,11 @@ set nocompatible
 
 call plug#begin()
 
-  Plug 'suan/vim-instant-markdown'
   Plug 'ConradIrwin/vim-bracketed-paste'
   Plug 'Glench/Vim-Jinja2-Syntax'
   Plug 'airblade/vim-gitgutter'
   Plug 'bling/vim-airline'
+  "Plug 'chase/vim-ansible-yaml'
   Plug 'fholgado/minibufexpl.vim'
   Plug 'junegunn/goyo.vim',      {'on': 'Goyo'}
   Plug 'junegunn/limelight.vim', {'on':  'Limelight'}
@@ -16,9 +16,11 @@ call plug#begin()
   Plug 'junegunn/seoul256.vim'
   Plug 'kchmck/vim-coffee-script'
   Plug 'navicore/vissort.vim'
+  Plug 'pearofducks/ansible-vim'
   Plug 'rooprob/vim-behave'
   Plug 'schlueter/zsh-ft.vim'
   Plug 'scrooloose/syntastic'
+  Plug 'suan/vim-instant-markdown'
   Plug 'tmux-plugins/vim-tmux'
   Plug 'tpope/vim-commentary', {'on': '<Plug>Commentary'}
   Plug 'tpope/vim-endwise'
@@ -27,8 +29,8 @@ call plug#begin()
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-tbone'
-  Plug 'vim-scripts/bats.vim'
   Plug 'vim-scripts/ReplaceWithRegister'
+  Plug 'vim-scripts/bats.vim'
 
   if s:darwin
     Plug 'zerowidth/vim-copy-as-rtf', {'on': 'CopyRTF'}
@@ -103,7 +105,7 @@ if exists('&colorcolumn')
 endif
 
 " Spaces, not tabs
-set expandtab tabstop=2 shiftwidth=2
+set expandtab tabstop=4 shiftwidth=4
 
 " Make modelines work
 set modelines=10
