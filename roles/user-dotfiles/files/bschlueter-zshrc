@@ -27,6 +27,7 @@ export FLAIR_USER=bschlueter
 export PYTHONSTARTUP=~/.pythonrc
 export GITHUB_USER=schlueter
 export GITHUB_TOKEN="${GITHUB_TOKEN:-THIS IS REQUIRED FOR HUB}"
+export HOMEBREW_GITHUB_API_TOKEN="${GITHUB_TOKEN}"
 export AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID:-AWS_ACCESS_KEY_ID is required by AWS cli}"
 export AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY:-AWS_SECRET_ACCESS_KEY is required by AWS cli}"
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
@@ -41,6 +42,7 @@ path_additions=(
     /opt/chefdk/bin
     $HOME/.rbenv/bin
     $HOME/bin
+    bin
 ); for p in ${path_additions[@]}; do [[ -d $p ]] && path=($p $path); done
 
 which pyenv > /dev/null && eval "$(pyenv init -)"
@@ -52,3 +54,5 @@ setopt NO_NOMATCH
 fpath=(/Users/blue/.zsh-completions /usr/local/share/zsh-completions $fpath)
 
 typeset -gU cdpath fpath mailpath path
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
