@@ -48,8 +48,10 @@ Thumbs.db
 ###################
 .sass-cache/
 .vagrant/
+*.retry
 node_modules/
 bower_components/
+
 
 # Editor Cache files #
 ######################
